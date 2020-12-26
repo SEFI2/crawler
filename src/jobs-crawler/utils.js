@@ -13,7 +13,6 @@ const PublishJob = async (job) => {
       }
     }
   `;
-
   const data = await client.request(mutation, job);
   console.log("SUCCESS PUBLISH: ", data);
   console.log("JOB: ", job);

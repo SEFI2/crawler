@@ -57,7 +57,7 @@ Resources:
       Runtime: nodejs12.x
       Description: A Lambda function that crawls the website.
       MemorySize: 128
-      Timeout: 60
+      Timeout: 900
       Policies:
         - AWSLambdaBasicExecutionRole
       Environment:
@@ -68,6 +68,6 @@ Resources:
         SimpleCWEEvent:
           Type: Schedule
           Properties:
-            Schedule: cron(0 * * * ? *)
+            Schedule: cron(0 0 0/7 ? * 2/1 *)
   MyQueue:
     Type: AWS::SQS::Queue
