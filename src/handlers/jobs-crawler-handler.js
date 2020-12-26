@@ -1,7 +1,6 @@
-import runCrawlers from "../jobs-crawler/runCrawlers";
+const runCrawlers = require("../jobs-crawler/runCrawlers");
 
 exports.crawl = async (event, context) => {
-
-  console.log(event.urls);
+  console.log({ event });
   runCrawlers(event.urls);
 };

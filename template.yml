@@ -61,6 +61,10 @@ Resources:
       Policies:
         # Give Lambda basic execution Permission to the scheduledEventLogger
         - AWSLambdaBasicExecutionRole
+      Environment:
+        Variables:
+          JERD_URL: http://jerdesh.ru/birge_rabota/jumush_ish
+          BACKEND_API: http://35.176.80.40:8080/graphql
       Events:
         SimpleCWEEvent:
           Type: Schedule

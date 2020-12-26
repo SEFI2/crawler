@@ -1,10 +1,11 @@
-
-import cheerio from "cheerio";
-import fetch from "node-fetch";
-import { sleep } from "../utils.js";
+const cheerio = require("cheerio");
+const fetch = require("node-fetch");
+const { sleep } = require("../utils.js");
 
 const crawlPage = async (pageUrl) => {
+  console.log({ pageUrl });
   const response = await fetch(pageUrl);
+  console.log({ response });
   const $page = cheerio.load(await response.text());
   const header = $page("body div#main h1").text().trim();
   const description = $page("body div#main div#description > p").text().trim();
@@ -18,11 +19,15 @@ const crawlPage = async (pageUrl) => {
     location,
     jobDate
   };
+  console.log({ job });
   return job;
 };
 
 const crawlList = async (url) => {
+  console.log({ url });
+
   const response = await fetch(url);
+  console.log({ response });
   const $ = cheerio.load(await response.text());
   const pageUrls = [];
 
@@ -41,6 +46,7 @@ const crawlList = async (url) => {
 };
 
 const jerd = async (url) => {
+  console.log({ url });
   const results = [];
   try {
     for (let i = 1; i <= 5; ++i) {
@@ -53,4 +59,5 @@ const jerd = async (url) => {
   }
   return results;
 };
-export default jerd;
+
+module.exports = jerd;

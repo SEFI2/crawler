@@ -1,11 +1,11 @@
-import client from "./graphql-client.js";
-import { gql } from 'graphql-request'
+const client = require("./graphql-client.js");
+const { gql } = require("graphql-request");
 
-export const sleep = ms => {
+const sleep = ms => {
   return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-export const PublishJob = async (job) => {
+const PublishJob = async (job) => {
   const mutation = gql`
     mutation AddJob($title: String!, $description: String!, $jobDate: String!, $phone: String!, $location: String!) {
       addJob(title: $title, description: $description, jobDate: $jobDate, phone: $phone, location: $location) {
@@ -18,3 +18,5 @@ export const PublishJob = async (job) => {
   console.log("SUCCESS PUBLISH: ", data);
   console.log("JOB: ", job);
 };
+
+module.exports = { sleep, PublishJob };
