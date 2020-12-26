@@ -59,7 +59,6 @@ Resources:
       MemorySize: 128
       Timeout: 60
       Policies:
-        # Give Lambda basic execution Permission to the scheduledEventLogger
         - AWSLambdaBasicExecutionRole
       Environment:
         Variables:

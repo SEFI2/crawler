@@ -1,0 +1,1 @@
+{"version":"0.0.1","name":"crawler","dependencies":{"apollo-boost":{"version":"0.4.9"},"cheerio":{"version":"1.0.0-rc.5"},"dotenv":{"version":"8.2.0"},"graphql-request":{"version":"3.4.0"},"graphql-tag":{"version":"2.11.0"},"graphql":{"version":"15.4.0"},"node-fetch":{"version":"2.6.1"}}}
