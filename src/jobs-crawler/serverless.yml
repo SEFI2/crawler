@@ -1,0 +1,10 @@
+service: crawlers
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  crawl:
+    handler: handler.crawl
+

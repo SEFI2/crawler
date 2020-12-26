@@ -53,7 +53,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./
-      Handler: src/handlers/jobs-crawler/handler.crawl
+      Handler: src/handlers/jobs-crawler-handler.crawl
       Runtime: nodejs12.x
       Description: A Lambda function that crawls the website.
       MemorySize: 128
