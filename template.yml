@@ -66,3 +66,5 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: cron(0 * * * ? *)
+  MyQueue:
+    Type: AWS::SQS::Queue
