@@ -7,14 +7,14 @@ const { JERD_URL } = process.env;
 
 const runCrawlers = async (urls) => {
   if (urls.includes(JERD_URL)) {
-    console.log("START JERD_URL");
-    const results = [];
-    for (let i = 1; i <= 2; ++i) {
-      const res = await jerdCrawler(`${JERD_URL}/${i}`);
-      results.push(...res);
-    }
+    const results = await jerdCrawler(JERD_URL);
     for (const result of results) {
-      await PublishJob(result);
+      try {
+        await PublishJob(result);
+      } catch (err) {
+        console.log("Cannot publish");
+        console.log({ err });
+      }
     }
   }
 };

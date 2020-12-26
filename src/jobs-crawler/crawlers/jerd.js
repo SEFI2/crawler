@@ -29,7 +29,7 @@ const jerdCrawler = async (url) => {
 
   $("body div#main ul.listing-card-list > li > a").each((i, el) => {
     const url = $(el).attr("href");
-    if (i === 0 || i === 1) { pageUrls.push(url); }
+    pageUrls.push(url);
   });
 
   const results = [];
