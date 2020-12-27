@@ -68,6 +68,6 @@ Resources:
         SimpleCWEEvent:
           Type: Schedule
           Properties:
-            Schedule: cron(0 * * * ? *)
+            Schedule: rate(5 hours)
   MyQueue:
     Type: AWS::SQS::Queue
