@@ -1,9 +1,0 @@
-START RequestId: 2b64a3a5-c2e5-4856-be62-a6320594bbf6 Version: $LATEST
-2020-12-26T18:12:47.527Z	undefined	INFO	{ BACKEND_API: 'http://35.176.80.40:8080/graphql' }
-2020-12-26T18:12:47.552Z	2b64a3a5-c2e5-4856-be62-a6320594bbf6	INFO	{ urls: 'http://jerdesh.ru/birge_rabota/jumush_ish' }
-2020-12-26T18:12:47.552Z	2b64a3a5-c2e5-4856-be62-a6320594bbf6	INFO	{ JERD_URL: 'http://jerdesh.ru/birge_rabota/jumush_ish' }
-2020-12-26T18:12:47.554Z	2b64a3a5-c2e5-4856-be62-a6320594bbf6	INFO	{ url: 'http://jerdesh.ru/birge_rabota/jumush_ish' }
-2020-12-26T18:12:47.555Z	2b64a3a5-c2e5-4856-be62-a6320594bbf6	INFO	{ url: 'http://jerdesh.ru/birge_rabota/jumush_ish/1' }
-2020-12-26T18:12:47.555Z	2b64a3a5-c2e5-4856-be62-a6320594bbf6	INFO	heLLO
-nullEND RequestId: 2b64a3a5-c2e5-4856-be62-a6320594bbf6
-REPORT RequestId: 2b64a3a5-c2e5-4856-be62-a6320594bbf6	Init Duration: 0.44 ms	Duration: 1846.64 ms	Billed Duration: 1900 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	

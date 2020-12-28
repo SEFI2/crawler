@@ -49,11 +49,11 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: cron(0 * * * ? *)
-  crawlerFunction:
+  crawlerJerdFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./
-      Handler: src/handlers/jobs-crawler-handler.crawl
+      Handler: src/handlers/jobs-crawler-handler.crawlJerd
       Runtime: nodejs12.x
       Description: A Lambda function that crawls the website.
       MemorySize: 128
@@ -62,12 +62,32 @@ Resources:
         - AWSLambdaBasicExecutionRole
       Environment:
         Variables:
-          JERD_URL: http://jerdesh.ru/birge_rabota/jumush_ish
           BACKEND_API: http://35.176.80.40:8080/graphql
       Events:
         SimpleCWEEvent:
           Type: Schedule
           Properties:
             Schedule: rate(4 hours)
+
+  crawlerMeknFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: src/handlers/jobs-crawler-handler.crawlMekn
+      Runtime: nodejs12.x
+      Description: A Lambda function that crawls the website.
+      MemorySize: 128
+      Timeout: 900
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Environment:
+        Variables:
+          BACKEND_API: http://35.176.80.40:8080/graphql
+      Events:
+        SimpleCWEEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(2 days)
+
   MyQueue:
     Type: AWS::SQS::Queue

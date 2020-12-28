@@ -1,22 +1,32 @@
 const dotenv = require("dotenv");
+const meknCrawler = require("./crawlers/mekn.js");
 const jerdCrawler = require("./crawlers/jerd.js");
-const { PublishJob } = require("./utils");
+
+const { PublishJob } = require("./graphql");
 dotenv.config();
 
-const { JERD_URL } = process.env;
-
-const runCrawlers = async (urls) => {
-  if (urls.includes(JERD_URL)) {
-    const results = await jerdCrawler(JERD_URL);
-    for (const result of results) {
-      try {
-        await PublishJob(result);
-      } catch (err) {
-        console.log("Cannot publish");
-        console.log({ err });
-      }
+const runJerd = async (url) => {
+  const results = await jerdCrawler(url);
+  for (const result of results) {
+    try {
+      await PublishJob(result);
+    } catch (err) {
+      console.log("Cannot publish");
+      console.log({ err });
     }
   }
 };
 
-module.exports = runCrawlers;
+const runMekn = async (url) => {
+  const results = await meknCrawler(url);
+  for (const result of results) {
+    try {
+      await PublishJob(result);
+    } catch (err) {
+      console.log("Cannot publish");
+      console.log({ err });
+    }
+  }
+};
+
+module.exports = { runJerd, runMekn };
