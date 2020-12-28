@@ -32,23 +32,6 @@ Resources:
   # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
 
   # This is a Lambda function config associated with the source code: scheduled-event-logger.js
-  scheduledEventLoggerFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: ./
-      Handler: src/handlers/scheduled-event-logger.scheduledEventLoggerHandler
-      Runtime: nodejs10.x
-      Description: A Lambda function that logs the payload of scheduled events.
-      MemorySize: 128
-      Timeout: 60
-      Policies:
-        # Give Lambda basic execution Permission to the scheduledEventLogger
-        - AWSLambdaBasicExecutionRole
-      Events:
-        SimpleCWEEvent:
-          Type: Schedule
-          Properties:
-            Schedule: cron(0 * * * ? *)
   crawlerJerdFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -88,6 +71,43 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: rate(2 days)
-
+  crawlerZherdFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: src/handlers/jobs-crawler-handler.crawlZherd
+      Runtime: nodejs12.x
+      Description: A Lambda function that crawls the website.
+      MemorySize: 128
+      Timeout: 900
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Environment:
+        Variables:
+          BACKEND_API: http://35.176.80.40:8080/graphql
+      Events:
+        SimpleCWEEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 days)
+  crawlerHalturFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: src/handlers/jobs-crawler-handler.crawlHaltur
+      Runtime: nodejs12.x
+      Description: A Lambda function that crawls the website.
+      MemorySize: 128
+      Timeout: 900
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Environment:
+        Variables:
+          BACKEND_API: http://35.176.80.40:8080/graphql
+      Events:
+        SimpleCWEEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(2 days)
   MyQueue:
     Type: AWS::SQS::Queue
