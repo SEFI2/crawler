@@ -8,7 +8,7 @@ const crawlPage = async (pageUrl) => {
   const header = $page("body div#main h1").text().trim();
   const description = $page("body div#main div#description > p").text().trim();
   const phone = $page("body div#main div#description > a").attr("href");
-  const jobDate = $page("body div#main div.item-header strong.publish").text().trim();
+  const jobDate = $page("body div#main div.item-header > div").clone().children().remove().end().text().trim();
   const location = $page("body div#main div.item-header ul#item_location > li").first().text().trim();
   const job = {
     title: header,

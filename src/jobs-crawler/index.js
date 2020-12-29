@@ -1,3 +1,4 @@
-const halturCrawler = require("./crawlers/haltur");
+const runMekn = require("./crawlers/mekn");
 
-halturCrawler("https://halturbek.ru/");
+// runMekn("http://zherdeshter.ru/birge_rabota/jumush_ish");
+runMekn("http://mekendesh.ru/index.php?page=search&sPattern=&sRegion=&sCategory=101");
