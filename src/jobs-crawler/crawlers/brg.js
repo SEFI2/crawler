@@ -1,19 +1,29 @@
 const cheerio = require("cheerio");
 const fetch = require("node-fetch");
-const { sleep } = require("../utils.js");
+const { sleep, downloadImage } = require("../utils.js");
+const tesseract = require("node-tesseract-ocr");
 
-const crawlPage = async (pageUrl) => {
+const crawlPage = async (pageUrl, mainUrl) => {
   const response = await fetch(pageUrl);
   const $page = cheerio.load(await response.text());
-  const header = $page("body div.add-content > div.left-side > h1.name_ads").text().trim();
-  const description = $page("body div.add-content > div.left-side > div.ads_field").text().trim();
-  const phone = $page("body div.add-content > div.right-side > div.contact > div.city-date").text().trim();
-  const jobDate = $page("body div.add-content > div.left-side > div.locate > div.city-date").text().trim();
-  const location = $page("body div#main div.item-header ul#item_location > li").first().text().trim();
+
+  const phoneUrl = $page("body div.add_content > div.right-side > div.contact div.contacts img.dont_copy_phone").attr("src").trim();
+
+  await downloadImage(`${mainUrl}${phoneUrl}`, "phone.png");
+
+  const phone = await tesseract.recognize("phone.png", {
+    oem: 1,
+    psm: 3,
+    tessedit_char_whitelist: "0123456789",
+  });
+  const header = $page("body div.add_content > div.left-side > h1.name_ads").text().trim();
+  const description = $page("body div.add_content > div.left-side > div.ads_field").text().trim();
+  const jobDate = $page("body div.add_content > div.left-side > div.locate > div.city-date").eq(1).text().trim();
+  const location = $page("body div.add_content > div.right-side > div.contact > div.contacts").eq(2).text().trim();
   const job = {
     title: header,
     description,
-    phone,
+    phone: phone.replace(/\D/g, ""),
     location,
     jobDate
   };
@@ -21,7 +31,7 @@ const crawlPage = async (pageUrl) => {
   return job;
 };
 
-const brgCrawler = async (url) => {
+const brgCrawler = async (url, mainUrl) => {
   console.log({ url });
   const response = await fetch(url);
   const $ = cheerio.load(await response.text());
@@ -29,7 +39,7 @@ const brgCrawler = async (url) => {
   $("body div.catalog_content > div.listitem_catalog > div.catalog_item > a.href-detail").each((i, el) => {
     const href = $(el).attr("href");
     const code = href.split("/")[3];
-    if (i === 0) pageUrls.push(`${url}${code}/`);
+    pageUrls.push(`${url}${code}/`);
   });
 
   const results = [];
@@ -39,8 +49,9 @@ const brgCrawler = async (url) => {
       results.push(job);
     }
     await sleep(1000);
-    return crawlPage(url);
+    return crawlPage(url, mainUrl);
   }, Promise.resolve());
+  console.log({ pageUrls });
   return results;
 };
 

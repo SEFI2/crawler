@@ -1,4 +1,6 @@
-const runMekn = require("./crawlers/mekn");
+const runner = require("./crawlers/brg");
+const { downloadImage } = require("./utils");
 
-// runMekn("http://zherdeshter.ru/birge_rabota/jumush_ish");
-runMekn("http://mekendesh.ru/index.php?page=search&sPattern=&sRegion=&sCategory=101");
+// downloadImage("https://www.google.com/images/srpr/logo3w.png", "google.png");
+
+runner("https://moscow.birge.ru/catalog/rabota_predlagayu/", "https://moscow.birge.ru");
