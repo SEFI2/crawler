@@ -52,7 +52,7 @@ const brgCrawler = async (url, mainUrl) => {
     return crawlPage(url, mainUrl);
   }, Promise.resolve());
   console.log({ pageUrls });
-  return results;
+  return results.reverse();
 };
 
 module.exports = brgCrawler;

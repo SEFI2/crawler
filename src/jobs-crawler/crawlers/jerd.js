@@ -40,7 +40,7 @@ const jerdCrawler = async (url) => {
     await sleep(1000);
     return crawlPage(url);
   }, Promise.resolve());
-  return results;
+  return results.reverse();
 };
 
 module.exports = jerdCrawler;

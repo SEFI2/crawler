@@ -40,7 +40,7 @@ const meknCrawler = async (url) => {
     await sleep(1000);
     return crawlPage(url);
   }, Promise.resolve());
-  return results;
+  return results.reverse();
 };
 
 module.exports = meknCrawler;
