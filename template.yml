@@ -44,7 +44,7 @@ Resources:
         - AWSLambdaBasicExecutionRole
       Environment:
         Variables:
-          BACKEND_API: http://35.176.80.40:8080/graphql
+          BACKEND_API: https://ig9k368qhf.execute-api.eu-west-2.amazonaws.com/default/jobs-lambda
       Events:
         SimpleCWEEvent:
           Type: Schedule
@@ -64,7 +64,7 @@ Resources:
         - AWSLambdaBasicExecutionRole
       Environment:
         Variables:
-          BACKEND_API: http://35.176.80.40:8080/graphql
+          BACKEND_API: https://ig9k368qhf.execute-api.eu-west-2.amazonaws.com/default/jobs-lambda
       Events:
         SimpleCWEEvent:
           Type: Schedule
@@ -83,7 +83,7 @@ Resources:
         - AWSLambdaBasicExecutionRole
       Environment:
         Variables:
-          BACKEND_API: http://35.176.80.40:8080/graphql
+          BACKEND_API: https://ig9k368qhf.execute-api.eu-west-2.amazonaws.com/default/jobs-lambda
       Events:
         SimpleCWEEvent:
           Type: Schedule
@@ -102,7 +102,7 @@ Resources:
         - AWSLambdaBasicExecutionRole
       Environment:
         Variables:
-          BACKEND_API: http://35.176.80.40:8080/graphql
+          BACKEND_API: https://ig9k368qhf.execute-api.eu-west-2.amazonaws.com/default/jobs-lambda
       Events:
         SimpleCWEEvent:
           Type: Schedule
