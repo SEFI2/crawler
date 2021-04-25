@@ -4,6 +4,7 @@ const { sleep, downloadImage } = require("../utils.js");
 const tesseract = require("node-tesseract-ocr");
 
 const crawlPage = async (pageUrl, mainUrl) => {
+  console.log({ pageUrl });
   const response = await fetch(pageUrl);
   const $page = cheerio.load(await response.text());
 
@@ -31,9 +32,9 @@ const crawlPage = async (pageUrl, mainUrl) => {
   return job;
 };
 
-const brgCrawler = async (url, mainUrl) => {
+const brgCrawler = async (url, mainUrl, page) => {
   console.log({ url });
-  const response = await fetch(url);
+  const response = await fetch(`${url}?PAGEN_1=${page}`);
   const $ = cheerio.load(await response.text());
   const pageUrls = [];
   $("body div.catalog_content > div.listitem_catalog > div.catalog_item > a.href-detail").each((i, el) => {
