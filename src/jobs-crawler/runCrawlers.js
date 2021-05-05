@@ -17,7 +17,6 @@ const runBrg = async (url, mainUrl) => {
     } catch (err) {
       console.log("Cannot publish");
       console.log({ err });
-      break;
     }
   }
 };
@@ -30,7 +29,6 @@ const runJerd = async (url) => {
     } catch (err) {
       console.log("Cannot publish");
       console.log({ err });
-      break;
     }
   }
 };
@@ -43,7 +41,6 @@ const runMekn = async (url) => {
     } catch (err) {
       console.log("Cannot publish");
       console.log({ err });
-      break;
     }
   }
 };
@@ -56,7 +53,6 @@ const runHaltur = async (url) => {
     } catch (err) {
       console.log("Cannot publish");
       console.log({ err });
-      break;
     }
   }
 };
@@ -69,7 +65,6 @@ const runYnty = async (url) => {
     } catch (err) {
       console.log("Cannot publish");
       console.log({ err });
-      break;
     }
   }
 };

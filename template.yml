@@ -113,7 +113,7 @@ Resources:
     Properties:
       CodeUri: ./
       Handler: src/handlers/jobs-crawler-handler.crawlYnty
-      Runtime: nodejs14.x
+      Runtime: nodejs12.x
       Description: A Lambda function that crawls the website.
       MemorySize: 128
       Timeout: 900
