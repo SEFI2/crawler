@@ -1,2 +1,2 @@
-const { runBrg } = require("./runCrawlers");
-runBrg("https://moscow.birge.ru/catalog/rabota_predlagayu/", "https://moscow.birge.ru", 1);
+const { runYnty } = require("./runCrawlers");
+runYnty("https://yntymak.ru/rabota-zhymysh-moskva");
