@@ -108,5 +108,24 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: rate(2 days)
+  crawlerYntyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: src/handlers/jobs-crawler-handler.crawlYnty
+      Runtime: nodejs14.x
+      Description: A Lambda function that crawls the website.
+      MemorySize: 128
+      Timeout: 900
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Environment:
+        Variables:
+          BACKEND_API: https://ig9k368qhf.execute-api.eu-west-2.amazonaws.com/default/jobs-lambda
+      Events:
+        SimpleCWEEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 days)
   MyQueue:
     Type: AWS::SQS::Queue
