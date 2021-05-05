@@ -126,6 +126,6 @@ Resources:
         SimpleCWEEvent:
           Type: Schedule
           Properties:
-            Schedule: rate(1 days)
+            Schedule: rate(1 day)
   MyQueue:
     Type: AWS::SQS::Queue
