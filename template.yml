@@ -127,21 +127,5 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: rate(1 day)
-  crawlerHouseFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: ./
-      Handler: src/handlers/jobs-crawler-handler.crawlHouse
-      Runtime: nodejs12.x
-      Description: A Lambda function that crawls the website.
-      MemorySize: 128
-      Timeout: 900
-      Policies:
-        - AWSLambdaBasicExecutionRole
-      Events:
-        SimpleCWEEvent:
-          Type: Schedule
-          Properties:
-            Schedule: rate(12 hours)
   MyQueue:
     Type: AWS::SQS::Queue

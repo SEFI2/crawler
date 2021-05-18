@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
 
-const brgCrawler = require("./crawlers/brg.js");
+// const brgCrawler = require("./crawlers/brg.js");
 const meknCrawler = require("./crawlers/mekn.js");
 const jerdCrawler = require("./crawlers/jerd.js");
 const halturCrawler = require("./crawlers/haltur.js");
@@ -13,7 +13,7 @@ dotenv.config();
 const runHouse = async (url, mainUrl) => {
   await houseCrawler(url, mainUrl);
 };
-
+/*
 const runBrg = async (url, mainUrl) => {
   const results = await brgCrawler(url, mainUrl);
   for (const result of results) {
@@ -24,7 +24,7 @@ const runBrg = async (url, mainUrl) => {
       console.log({ err });
     }
   }
-};
+}; */
 
 const runJerd = async (url) => {
   const results = await jerdCrawler(url);
