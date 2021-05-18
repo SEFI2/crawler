@@ -1,2 +1,2 @@
-const { runYnty } = require("./runCrawlers");
-runYnty("https://yntymak.ru/rabota-zhymysh-moskva");
+const { runHouse } = require("./runCrawlers");
+runHouse("https://krysha.kg/sale/houses/", "https://krysha.kg");

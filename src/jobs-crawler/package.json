@@ -12,7 +12,9 @@
         "graphql-request": "^3.3.0",
         "graphql-tag": "^2.11.0",
         "node-fetch": "^2.6.1",
+        "node-telegram-bot-api": "^0.53.0",
         "node-tesseract-ocr": "^2.0.0",
+        "puppeteer": "^9.1.1",
         "request": "^2.88.2"
     },
     "devDependencies": {

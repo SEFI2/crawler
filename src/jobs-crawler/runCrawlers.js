@@ -5,9 +5,14 @@ const meknCrawler = require("./crawlers/mekn.js");
 const jerdCrawler = require("./crawlers/jerd.js");
 const halturCrawler = require("./crawlers/haltur.js");
 const yntyCrawler = require("./crawlers/ynty.js");
+const houseCrawler = require("./crawlers/house.js");
 
 const { PublishJob } = require("./graphql");
 dotenv.config();
+
+const runHouse = async (url, mainUrl) => {
+  await houseCrawler(url, mainUrl);
+};
 
 const runBrg = async (url, mainUrl) => {
   const results = await brgCrawler(url, mainUrl);
@@ -69,4 +74,4 @@ const runYnty = async (url) => {
   }
 };
 
-module.exports = { runJerd, runMekn, runHaltur, runBrg, runYnty };
+module.exports = { runHouse, runJerd, runMekn, runHaltur, runBrg, runYnty };

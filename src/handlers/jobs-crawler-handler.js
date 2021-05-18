@@ -1,4 +1,4 @@
-const { runJerd, runMekn, runHaltur, runBrg, runYnty } = require("../jobs-crawler/runCrawlers");
+const { runHouse, runJerd, runMekn, runHaltur, runBrg, runYnty } = require("../jobs-crawler/runCrawlers");
 exports.crawlJerd = async (event, context) => {
   await runJerd("http://jerdesh.ru/birge_rabota/jumush_ish");
 };
@@ -20,4 +20,8 @@ exports.crawlBrg = async (event, context) => {
 
 exports.crawlYnty = async (event, context) => {
   await runYnty("https://yntymak.ru/rabota-zhymysh-moskva");
+};
+
+exports.crawlHouse = async (event, context) => {
+  await runHouse("https://krysha.kg/sale/houses/", "https://krysha.kg");
 };
